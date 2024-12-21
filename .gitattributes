@@ -1,0 +1,20 @@
+# Normalizar todos los archivos de texto a LF
+* text=auto
+
+# Forzar LF en archivos específicos
+*.py eol=lf
+*.sh eol=lf
+*.yml eol=lf
+*.yaml eol=lf
+*.json eol=lf
+*.html eol=lf
+*.css eol=lf
+*.js eol=lf
+
+# Ignorar saltos de línea en archivos binarios
+*.jpg binary
+*.png binary
+*.gif binary
+*.pdf binary
+*.zip binary
+*.tar.gz binary

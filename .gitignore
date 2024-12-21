@@ -169,3 +169,46 @@ cython_debug/
 
 # PyPI configuration file
 .pypirc
+
+# Django migration files
+*/migrations/*.py
+!*/migrations/__init__.py
+
+# VS Code settings
+.vscode/
+
+# Docker
+*.pid
+docker-compose.override.yml
+.docker/
+
+# Static and media files
+/staticfiles/
+.media/
+
+# Local environment settings
+.env
+secrets.json
+
+# Server logs
+*.log
+
+# Bootstrap cache
+.sass-cache/
+
+# Deployment files
+*.bak
+*.swp
+*.tmp
+
+# Vue.js
+node_modules/
+dist/
+*.log
+*.env.local
+*.env.production
+
+# PostgreSQL
+*.sql
+*.dump
+
