@@ -28,7 +28,9 @@ services:
     ports:
       - "8080:8080"
     volumes:
-      - ./frontend:/app
+      - ./frontend:/app:cached
+      - ./frontend/src:/app/src:cached
+      - /app/node_modules
       
     stdin_open: true
     tty: true

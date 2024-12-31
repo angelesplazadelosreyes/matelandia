@@ -2,6 +2,7 @@
   <div id="app">
     <img alt="Vue logo" src="./assets/logo.png" />
     <h1>{{ message }}</h1> <!-- Mostrará el mensaje del backend -->
+    <p>Este es un texto estático de prueba 14</p>
   </div>
 </template>
 

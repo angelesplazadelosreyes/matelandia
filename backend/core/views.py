@@ -8,5 +8,6 @@ def home_view(request):
 
 
 def test_view(request):
-    return JsonResponse({"message": "Hello from Matelandia Backend!"})
+    return JsonResponse({"message": "Hello from Matelandia Backend!\nÁngeles"})
 
+# Este es un comentario de prueba para verificar la recarga automática 2

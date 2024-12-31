@@ -4,6 +4,9 @@ FROM node:18-slim
 # Crear y establecer el directorio de trabajo
 WORKDIR /app
 
+# Establecer el entorno en modo desarrollo
+ENV NODE_ENV=development
+
 # Copiar archivos necesarios para instalar dependencias
 COPY package*.json ./
 
