@@ -7,7 +7,7 @@
       <b-button variant="success" @click="showAlert">Haz clic aquí</b-button>
       <router-view />
     </main>
-    <footer class="bg-dark text-white text-center py-3">
+    <footer class="footer bg-dark text-white text-center py-3">
       <p>© 2025 Matelandia</p>
     </footer>
   </div>
@@ -50,24 +50,22 @@ export default {
 html, body {
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
-  background-color: black !important;
-  color: white;
   height: 100%;
+  background-color: black;
+  color: white;
 }
 
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: white;
-  min-height: 100vh;
   display: flex;
   flex-direction: column;
+  min-height: 100vh; /* Asegura que el contenedor principal tenga la altura completa de la ventana */
 }
 
-footer {
+main {
+  flex: 1; /* Permite que el contenido principal ocupe el espacio restante */
+}
+
+.footer {
   background-color: #2c3e50;
   color: white;
   text-align: center;
