@@ -1,12 +1,13 @@
 <template>
   <div id="app">
     <AppHeader />
-    <main>
-      <h1>{{ message }}</h1>
-      <p>Este es un texto estático de prueba 14</p>
+    <main class="container text-center my-5">
+      <h1 class="text-primary">{{ message }}</h1>
+      <p class="text-muted">Este es un texto estático de prueba 14</p>
+      <b-button variant="success" @click="showAlert">Haz clic aquí</b-button>
       <router-view />
     </main>
-    <footer>
+    <footer class="bg-dark text-white text-center py-3">
       <p>© 2025 Matelandia</p>
     </footer>
   </div>
@@ -25,6 +26,11 @@ export default {
     return {
       message: "Cargando...",
     };
+  },
+  methods: {
+    showAlert() {
+      alert("¡BootstrapVue-Next está funcionando!");
+    },
   },
   mounted() {
     axios
@@ -45,9 +51,9 @@ html, body {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  background-color: black; /* Fondo negro para toda la página */
-  color: white; /* Asegura que el texto sea visible */
-  height: 100%; /* Asegura que html y body ocupen toda la altura */
+  background-color: black;
+  color: white;
+  height: 100%;
 }
 
 #app {
@@ -56,18 +62,13 @@ html, body {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: white;
-  min-height: 100vh; /* Asegura que el #app ocupe al menos toda la altura de la ventana */
+  min-height: 100vh;
   display: flex;
-  flex-direction: column; /* Organiza los elementos en columna */
-}
-
-main {
-  flex: 1; /* Hace que el contenido principal tome el espacio disponible */
-  padding: 100px;
+  flex-direction: column;
 }
 
 footer {
-  background-color: #2c3e50; /* Fondo oscuro para diferenciar */
+  background-color: #2c3e50;
   color: white;
   text-align: center;
   padding: 10px;
