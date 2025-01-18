@@ -2,6 +2,9 @@
   <div id="app">
     <AppHeader />
     <main class="container text-center my-5">
+      <h1 class="text-primary">{{ message }}</h1>
+      <p class="text-muted">Este es un texto estático de prueba 14</p>
+      <b-button variant="success" @click="showAlert">Haz clic aquí</b-button>
       <router-view />
     </main>
     <footer class="footer bg-dark text-white text-center py-3">
