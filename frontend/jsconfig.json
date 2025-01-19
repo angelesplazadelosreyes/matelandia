@@ -15,5 +15,8 @@
       "dom.iterable",
       "scripthost"
     ]
-  }
+  },
+  "exclude": [
+    "src/App copy.vue" // Excluir el archivo eliminado
+  ]
 }
