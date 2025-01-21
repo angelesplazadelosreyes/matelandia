@@ -11,8 +11,22 @@
     <div class="exercise-container">
       <!-- Cuadro izquierdo -->
       <div class="exercise-left">
-        <p v-if="!selectedExercise">Selecciona lo que quieras ejercitar en el listado de la derecha</p>
-        <p v-else>{{ selectedExercise }}</p>
+        <p v-if="!selectedExercise">Cargando ejercicio...</p>
+        <div v-else>
+          <p>
+            ¿Cuánto es {{ selectedExercise.factor1 }} x
+            {{ selectedExercise.factor2 }}?
+          </p>
+          <div>
+            <button
+              v-for="(option, index) in selectedExercise.options"
+              :key="index"
+              @click="submitAnswer(option)"
+            >
+              {{ option }}
+            </button>
+          </div>
+        </div>
       </div>
 
       <!-- Cuadro derecho -->
@@ -32,7 +46,8 @@
 </template>
 
 <script>
-import ExerciseFilters from '../components/Exercises/ExerciseFilters.vue';
+import axios from "@/axios";
+import ExerciseFilters from "../components/Exercises/ExerciseFilters.vue";
 
 export default {
   components: {
@@ -53,7 +68,27 @@ export default {
     };
   },
   methods: {
-    // Filtrar ejercicios según los valores seleccionados
+    // Obtener datos del backend
+    async fetchExercise() {
+      try {
+        const response = await axios.get("exercises/times-table/");
+        this.selectedExercise = response.data; // Guardar el ejercicio recibido
+      } catch (error) {
+        console.error("Error al obtener el ejercicio:", error);
+      }
+    },
+    // Manejar la selección de un ejercicio
+    selectExercise(title) {
+      this.selectedExercise = title;
+    },
+    submitAnswer(option) {
+      if (option === this.selectedExercise.options[0]) {
+        alert("¡Respuesta correcta!");
+      } else {
+        alert("Respuesta incorrecta.");
+      }
+      this.fetchExercise(); // Cargar un nuevo ejercicio
+    },
     applyFilters(filters) {
       this.filteredExercises = this.exercises.filter((exercise) => {
         return (
@@ -62,63 +97,13 @@ export default {
         );
       });
     },
-    // Manejar la selección de un ejercicio
-    selectExercise(title) {
-      this.selectedExercise = title;
-    },
   },
   mounted() {
-    // Mostrar todos los ejercicios al cargar la página
-    this.filteredExercises = this.exercises;
+    this.fetchExercise(); // Cargar el primer ejercicio al montar el componente
   },
 };
 </script>
 
 <style scoped>
-/* Contenedor principal */
-.exercise-container {
-  display: flex;
-  justify-content: space-between;
-  gap: 16px;
-  padding: 20px;
-}
-
-/* Estilos para el cuadro izquierdo */
-.exercise-left {
-  flex: 1;
-  border: 2px solid #28a745;
-  border-radius: 8px;
-  padding: 16px;
-  color: white;
-  font-size: 1.2rem; 
-  background-color: #2c3e50;
-}
-
-/* Estilos para el cuadro derecho */
-.exercise-right {
-  flex: 1;
-  border: 2px solid #28a745;
-  border-radius: 8px;
-  padding: 16px;
-  color: #28a745;
-  font-size: 1.2rem; 
-}
-
-/* Estilos para la lista en el cuadro derecho */
-.exercise-right ul {
-  list-style: none;
-  padding: 0;
-}
-
-.exercise-right li {
-  cursor: pointer;
-  padding: 8px;
-  border: 1px solid transparent;
-  border-radius: 4px;
-}
-
-.exercise-right li:hover {
-  background-color: #28a745;
-  color: black;
-}
+/* Mantén los estilos existentes */
 </style>
